@@ -3,13 +3,26 @@ import { createRoot } from "react-dom/client";
 import cytoscape from "cytoscape";
 import cola from "cytoscape-cola";
 import MapView from "./MapView";
+import { useLang } from "./i18n";
 import "./styles.css";
 
 cytoscape.use(cola);
 
-const pct = (v) =>
-  Number.isFinite(Number(v)) ? `${(Number(v) * 100).toFixed(1)}%` : "—";
-const num = (v) => (Number.isFinite(Number(v)) ? Number(v).toFixed(2) : "—");
+const pct = (v, lang = "en") =>
+  Number.isFinite(Number(v))
+    ? new Intl.NumberFormat(lang, {
+        style: "percent",
+        minimumFractionDigits: 1,
+        maximumFractionDigits: 1,
+      }).format(Number(v))
+    : "—";
+const num = (v, lang = "en") =>
+  Number.isFinite(Number(v))
+    ? new Intl.NumberFormat(lang, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }).format(Number(v))
+    : "—";
 const color = (v) => {
   v = Math.max(-1, Math.min(1, Number(v) || 0));
   const neutral = [86, 92, 100]; // mid slate — balanced
@@ -25,6 +38,7 @@ function App() {
     cyRef = useRef(null),
     timers = useRef([]),
     homeView = useRef(null);
+  const { lang, setLang, t, displayName } = useLang();
   const [data, setData] = useState(null),
     [selected, setSelected] = useState(null),
     [query, setQuery] = useState(""),
@@ -139,6 +153,7 @@ function App() {
         id: String(c.id).toLowerCase(),
         label: String(c.id).toUpperCase(),
         name: c.name,
+        name_fr: c.name_fr,
         net: Number(c.net_dominance) || 0,
         size: Number(c.network_involvement) || 0,
         color: color(c.net_dominance),
@@ -275,7 +290,12 @@ function App() {
     cy.on("mouseover", "node", (e) => {
       const n = e.target;
       const pos = n.renderedPosition();
-      setHover({ x: pos.x, y: pos.y, text: n.data("name") || n.data("label") });
+      const nodeLang = localStorage.getItem("lang") || "en";
+      const label =
+        nodeLang === "fr"
+          ? n.data("name_fr") || n.data("name")
+          : n.data("name");
+      setHover({ x: pos.x, y: pos.y, text: label || n.data("label") });
       box.current.style.cursor = "pointer";
     });
 
@@ -299,6 +319,9 @@ function App() {
         (x) =>
           String(x.id).toLowerCase() === q ||
           String(x.name || "")
+            .toLowerCase()
+            .includes(q) ||
+          String(x.name_fr || "")
             .toLowerCase()
             .includes(q),
       );
@@ -324,39 +347,41 @@ function App() {
       <header>
         <div>
           <div className="eyebrow">INTERACTIVE DASHBOARD</div>
-          <h1>Importations/Exportations Music Dynamics</h1>
-          <p>Foreign music flows across Spotify's national Top 200 Charts</p>
+          <h1>{t("title")}</h1>
+          <p>{t("tagline")}</p>
         </div>
         <div className="actions">
+          <button onClick={() => setLang(lang === "en" ? "fr" : "en")}>
+            {lang === "en" ? "FR" : "EN"}
+          </button>
           <button
             onClick={() => {
               reset();
               setView((v) => (v === "network" ? "map" : "network"));
             }}
           >
-            {view === "network" ? "Map view" : "Network view"}
+            {view === "network" ? t("mapViewBtn") : t("networkViewBtn")}
           </button>
-          <button onClick={reset}>Reset view</button>
+          <button onClick={reset}>{t("resetBtn")}</button>
         </div>
       </header>
       {demo && (
         <div className="notice">
-          No <code>network.json</code> found. Put your exported dataset in{" "}
-          <code>public/data/network.json</code>.
+          {t("noticeDemo")} <code>public/data/network.json</code>.
         </div>
       )}
       <div className="controls">
         <label>
-          <span>Search country</span>
+          <span>{t("searchLabel")}</span>
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Canada or CA"
+            placeholder={t("searchPlaceholder")}
           />
         </label>
         <label className="range">
           <span>
-            Minimum Chart share <b>{pct(threshold)}</b>
+            {t("thresholdLabel")} <b>{pct(threshold, lang)}</b>
           </span>
           <input
             type="range"
@@ -373,15 +398,19 @@ function App() {
             checked={topOnly}
             onChange={(e) => setTopOnly(e.target.checked)}
           />{" "}
-          Top 5 relationships
+          {t("topOnly")}
         </label>
       </div>
       <main>
         <section className="network-card">
           <div className="meta">
-            <span>{countries.length} countries</span>
-            <span>{edges.length} visible relationships</span>
-            <span className="hint">Click a country to explore</span>
+            <span>
+              {countries.length} {t("countriesLabel")}
+            </span>
+            <span>
+              {edges.length} {t("relationshipsLabel")}
+            </span>
+            <span className="hint">{t("hoverHint")}</span>
           </div>
           {view === "network" ? (
             <div className="network" style={{ position: "relative" }}>
@@ -404,21 +433,20 @@ function App() {
               onSelectCountry={(id) => setSelected(other(id) || null)}
               onBackground={reset}
               colorFn={color}
+              lang={lang}
             />
           )}
           <div className="legend">
             <div>
               <span className="dot blue" />
-              Importer <span className="dot grey" />
-              Balanced <span className="dot red" />
-              Exporter <span className="line" />
-              weak <span className="line thick" />
-              strong
+              {t("importer")} <span className="dot grey" />
+              {t("balanced")} <span className="dot red" />
+              {t("exporter")} <span className="line" />
+              {t("weak")} <span className="line thick" />
+              {t("strong")}
             </div>
             <small>
-              {view === "network"
-                ? "Node size = international network involvement · Arrow = source → destination"
-                : "Click a country to zoom in, then out to its top 5 trade partners"}
+              {view === "network" ? t("legendNetwork") : t("legendMap")}
             </small>
           </div>
         </section>
@@ -426,11 +454,8 @@ function App() {
           {!selected ? (
             <div className="empty">
               <div className="icon">↗</div>
-              <h2>Explore a country</h2>
-              <p>
-                Click any node to see local and foreign chart composition, main
-                imports, and main exports.
-              </p>
+              <h2>{t("emptyTitle")}</h2>
+              <p>{t("emptyBody")}</p>
             </div>
           ) : (
             <>
@@ -439,7 +464,7 @@ function App() {
                   <div className="code">
                     {String(selected.id).toUpperCase()}
                   </div>
-                  <h2>{selected.name || selected.id}</h2>
+                  <h2>{displayName(selected)}</h2>
                 </div>
                 <button className="close" onClick={reset}>
                   ×
@@ -447,8 +472,10 @@ function App() {
               </div>
               <div className="composition">
                 <div className="comp-label">
-                  <span>Chart composition</span>
-                  <span>{selected.n_weeks ?? "—"} weeks</span>
+                  <span>{t("chartComposition")}</span>
+                  <span>
+                    {selected.n_weeks ?? "—"} {t("weeks")}
+                  </span>
                 </div>
                 <div className="bar">
                   <i
@@ -460,68 +487,70 @@ function App() {
                 </div>
                 <div className="labels">
                   <span>
-                    Local <b>{pct(selected.local_share)}</b>
+                    {t("localShare")} <b>{pct(selected.local_share, lang)}</b>
                   </span>
                   <span>
-                    Foreign <b>{pct(selected.foreign_share)}</b>
+                    {t("foreignShare")}{" "}
+                    <b>{pct(selected.foreign_share, lang)}</b>
                   </span>
                 </div>
                 <div className="metrics">
                   <div>
-                    <small>Unknown metadata</small>
-                    <b>{pct(selected.unknown_share)}</b>
+                    <small>{t("unknownMeta")}</small>
+                    <b>{pct(selected.unknown_share, lang)}</b>
                   </div>
                   <div>
-                    <small>Export intensity</small>
-                    <b>{num(selected.export_intensity)}</b>
+                    <small>{t("exportIntensity")}</small>
+                    <b>{num(selected.export_intensity, lang)}</b>
                   </div>
                   <div>
-                    <small>Import intensity</small>
-                    <b>{num(selected.import_intensity)}</b>
+                    <small>{t("importIntensity")}</small>
+                    <b>{num(selected.import_intensity, lang)}</b>
                   </div>
                 </div>
               </div>
               <div className="position">
-                <span>Network position</span>
+                <span>{t("networkPosition")}</span>
                 <b
                   className={
                     selected.net_dominance >= 0 ? "exporter" : "importer"
                   }
                 >
-                  {selected.net_dominance >= 0 ? "Exporter" : "Importer"}
+                  {selected.net_dominance >= 0 ? t("exporter") : t("importer")}
                 </b>
-                <span>{num(selected.net_dominance)}</span>
+                <span>{num(selected.net_dominance, lang)}</span>
               </div>
               <List
-                title="Main imports"
-                sub="Foreign source → this chart"
+                title={t("mainImports")}
+                sub={t("importsSub")}
                 data={rows(imports, topOnly)}
                 other={other}
+                pct={(v) => pct(v, lang)}
+                noRelationship={t("noRelationship")}
               />
               <List
-                title="Main exports"
-                sub="This chart → foreign destination"
+                title={t("mainExports")}
+                sub={t("exportsSub")}
                 data={rows(exports, topOnly)}
                 other={other}
+                pct={(v) => pct(v, lang)}
+                noRelationship={t("noRelationship")}
               />
             </>
           )}
         </aside>
       </main>
       <footer>
-        <span>Foreign music flows</span>
-        <span>Interactive dashboard</span>
+        <span>{t("tagline")}</span>
+        <span>{t("footerTag")}</span>
       </footer>
     </div>
   );
 }
-function List({ title, sub, data, other }) {
+function List({ title, sub, data, other, pct, noRelationship }) {
+  const isImports = title.toLowerCase().includes("import") || title.toLowerCase().includes("importation");
   return (
-    <section
-      className={`relationships ${
-        title === "Main imports" ? "imports" : "exports"
-      }`}
-    >
+    <section className={`relationships ${isImports ? "imports" : "exports"}`}>
       <h3>{title}</h3>
       <p>{sub}</p>
       {data.length ? (
@@ -530,7 +559,7 @@ function List({ title, sub, data, other }) {
             let c = other(
               e.source === e.target
                 ? e.source
-                : title === "Main imports"
+                : isImports
                   ? e.source
                   : e.target,
             );
@@ -547,7 +576,7 @@ function List({ title, sub, data, other }) {
           })}
         </div>
       ) : (
-        <div className="none">No relationship above the current threshold.</div>
+        <div className="none">{noRelationship}</div>
       )}
     </section>
   );

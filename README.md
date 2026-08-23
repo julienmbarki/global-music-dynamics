@@ -8,6 +8,7 @@ Interactive dashboard visualizing foreign music flows across Spotify's national 
 - **Map view** — 3D globe (react-globe.gl) rendering the same data on real country geometry. Click a country to zoom in, then pull back to reveal its top 5 import/export partners as animated arcs.
 - **Search, threshold filter, and top-5-only toggle** to control which relationships are visible.
 - **Detail panel** showing local vs. foreign chart composition, export/import intensity, and ranked trading partners for the selected country.
+- **Languages** - supports English and French languages.
 
 ## Tech stack
 

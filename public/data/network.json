@@ -8,6 +8,7 @@
     {
       "id": "ae",
       "name": "United Arab Emirates",
+      "name_fr": "\u00c9mirats arabes unis",
       "local_share": 0.0003349413897522836,
       "foreign_share": 0.9996650586102477,
       "unknown_share": 0.12452830188679245,
@@ -20,6 +21,7 @@
     {
       "id": "ar",
       "name": "Argentina",
+      "name_fr": "Argentine",
       "local_share": 0.48414622239638244,
       "foreign_share": 0.5158537776036176,
       "unknown_share": 0.11547169811320754,
@@ -32,6 +34,7 @@
     {
       "id": "at",
       "name": "Austria",
+      "name_fr": "Autriche",
       "local_share": 0.03056067047754766,
       "foreign_share": 0.9694393295224523,
       "unknown_share": 0.0962264150943396,
@@ -44,6 +47,7 @@
     {
       "id": "au",
       "name": "Australia",
+      "name_fr": "Australie",
       "local_share": 0.06658440822709864,
       "foreign_share": 0.9334155917729013,
       "unknown_share": 0.05537735849056606,
@@ -56,6 +60,7 @@
     {
       "id": "be",
       "name": "Belgium",
+      "name_fr": "Belgique",
       "local_share": 0.06550000479049026,
       "foreign_share": 0.9344999952095098,
       "unknown_share": 0.08830188679245281,
@@ -68,6 +73,7 @@
     {
       "id": "bg",
       "name": "Bulgaria",
+      "name_fr": "Bulgarie",
       "local_share": 0.3888111888111888,
       "foreign_share": 0.6111888111888112,
       "unknown_share": 0.28,
@@ -80,6 +86,7 @@
     {
       "id": "bo",
       "name": "Bolivia, Plurinational State of",
+      "name_fr": "Bolivie",
       "local_share": 0.0,
       "foreign_share": 1.0,
       "unknown_share": 0.19839622641509436,
@@ -92,6 +99,7 @@
     {
       "id": "br",
       "name": "Brazil",
+      "name_fr": "Br\u00e9sil",
       "local_share": 0.822882372821304,
       "foreign_share": 0.1771176271786959,
       "unknown_share": 0.24941176470588236,
@@ -104,6 +112,7 @@
     {
       "id": "ca",
       "name": "Canada",
+      "name_fr": "Canada",
       "local_share": 0.11772905323659069,
       "foreign_share": 0.8822709467634093,
       "unknown_share": 0.07292452830188677,
@@ -116,6 +125,7 @@
     {
       "id": "ch",
       "name": "Switzerland",
+      "name_fr": "Suisse",
       "local_share": 0.006852826777202084,
       "foreign_share": 0.993147173222798,
       "unknown_share": 0.08896226415094338,
@@ -128,6 +138,7 @@
     {
       "id": "cl",
       "name": "Chile",
+      "name_fr": "Chili",
       "local_share": 0.22357373153297164,
       "foreign_share": 0.7764262684670284,
       "unknown_share": 0.2202,
@@ -140,6 +151,7 @@
     {
       "id": "co",
       "name": "Colombia",
+      "name_fr": "Colombie",
       "local_share": 0.45776660345137427,
       "foreign_share": 0.5422333965486257,
       "unknown_share": 0.23066037735849057,
@@ -152,6 +164,7 @@
     {
       "id": "cr",
       "name": "Costa Rica",
+      "name_fr": "Costa Rica",
       "local_share": 0.0,
       "foreign_share": 1.0,
       "unknown_share": 0.21075471698113207,
@@ -164,6 +177,7 @@
     {
       "id": "cy",
       "name": "Cyprus",
+      "name_fr": "Chypre",
       "local_share": 0.0,
       "foreign_share": 1.0,
       "unknown_share": 0.28500000000000003,
@@ -176,6 +190,7 @@
     {
       "id": "cz",
       "name": "Czechia",
+      "name_fr": "Tch\u00e9quie",
       "local_share": 0.36860110990860845,
       "foreign_share": 0.6313988900913915,
       "unknown_share": 0.24479166666666666,
@@ -188,6 +203,7 @@
     {
       "id": "de",
       "name": "Germany",
+      "name_fr": "Allemagne",
       "local_share": 0.29953114660024827,
       "foreign_share": 0.7004688533997517,
       "unknown_share": 0.12622641509433963,
@@ -200,6 +216,7 @@
     {
       "id": "dk",
       "name": "Denmark",
+      "name_fr": "Danemark",
       "local_share": 0.4542251269104065,
       "foreign_share": 0.5457748730895935,
       "unknown_share": 0.18037735849056605,
@@ -212,6 +229,7 @@
     {
       "id": "ec",
       "name": "Ecuador",
+      "name_fr": "\u00c9quateur",
       "local_share": 0.0002329728485964105,
       "foreign_share": 0.9997670271514035,
       "unknown_share": 0.14754716981132077,
@@ -224,6 +242,7 @@
     {
       "id": "ee",
       "name": "Estonia",
+      "name_fr": "Estonie",
       "local_share": 0.3697184679231924,
       "foreign_share": 0.6302815320768076,
       "unknown_share": 0.16028301886792454,
@@ -236,6 +255,7 @@
     {
       "id": "es",
       "name": "Spain",
+      "name_fr": "Espagne",
       "local_share": 0.34709783964744495,
       "foreign_share": 0.652902160352555,
       "unknown_share": 0.20396226415094337,
@@ -248,6 +268,7 @@
     {
       "id": "fi",
       "name": "Finland",
+      "name_fr": "Finlande",
       "local_share": 0.654547457557644,
       "foreign_share": 0.3454525424423559,
       "unknown_share": 0.18169811320754714,
@@ -260,6 +281,7 @@
     {
       "id": "fr",
       "name": "France",
+      "name_fr": "France",
       "local_share": 0.6607986785102657,
       "foreign_share": 0.33920132148973414,
       "unknown_share": 0.16660377358490566,
@@ -272,6 +294,7 @@
     {
       "id": "gb",
       "name": "United Kingdom",
+      "name_fr": "Royaume-Uni",
       "local_share": 0.3508146926957887,
       "foreign_share": 0.6491853073042113,
       "unknown_share": 0.0671698113207547,
@@ -284,6 +307,7 @@
     {
       "id": "gt",
       "name": "Guatemala",
+      "name_fr": "Guatemala",
       "local_share": 0.0,
       "foreign_share": 1.0,
       "unknown_share": 0.23084905660377358,
@@ -296,6 +320,7 @@
     {
       "id": "hn",
       "name": "Honduras",
+      "name_fr": "Honduras",
       "local_share": 0.0,
       "foreign_share": 1.0,
       "unknown_share": 0.18198113207547173,
@@ -308,6 +333,7 @@
     {
       "id": "hu",
       "name": "Hungary",
+      "name_fr": "Hongrie",
       "local_share": 0.518943325092563,
       "foreign_share": 0.48105667490743703,
       "unknown_share": 0.1760377358490566,
@@ -320,6 +346,7 @@
     {
       "id": "id",
       "name": "Indonesia",
+      "name_fr": "Indon\u00e9sie",
       "local_share": 0.6705849831044856,
       "foreign_share": 0.32941501689551445,
       "unknown_share": 0.17603773584905663,
@@ -332,6 +359,7 @@
     {
       "id": "ie",
       "name": "Ireland",
+      "name_fr": "Irlande",
       "local_share": 0.1575805172282062,
       "foreign_share": 0.8424194827717939,
       "unknown_share": 0.05292452830188682,
@@ -344,6 +372,7 @@
     {
       "id": "in",
       "name": "India",
+      "name_fr": "Inde",
       "local_share": 0.8781600868773224,
       "foreign_share": 0.12183991312267767,
       "unknown_share": 0.1941509433962264,
@@ -356,6 +385,7 @@
     {
       "id": "is",
       "name": "Iceland",
+      "name_fr": "Islande",
       "local_share": 0.44131881319398814,
       "foreign_share": 0.5586811868060119,
       "unknown_share": 0.21639999999999998,
@@ -368,6 +398,7 @@
     {
       "id": "it",
       "name": "Italy",
+      "name_fr": "Italie",
       "local_share": 0.7393938187316867,
       "foreign_share": 0.2606061812683133,
       "unknown_share": 0.18952830188679246,
@@ -380,6 +411,7 @@
     {
       "id": "kr",
       "name": "Korea, Republic of",
+      "name_fr": "Cor\u00e9e du Sud",
       "local_share": 0.758907554775425,
       "foreign_share": 0.24109244522457485,
       "unknown_share": 0.27020833333333333,
@@ -392,6 +424,7 @@
     {
       "id": "lt",
       "name": "Lithuania",
+      "name_fr": "Lituanie",
       "local_share": 0.3344147821749091,
       "foreign_share": 0.6655852178250908,
       "unknown_share": 0.19047169811320755,
@@ -404,6 +437,7 @@
     {
       "id": "lu",
       "name": "Luxembourg",
+      "name_fr": "Luxembourg",
       "local_share": 0.0003260003311567512,
       "foreign_share": 0.9996739996688433,
       "unknown_share": 0.12915094339622643,
@@ -416,6 +450,7 @@
     {
       "id": "mx",
       "name": "Mexico",
+      "name_fr": "Mexique",
       "local_share": 0.6359916679065615,
       "foreign_share": 0.36400833209343847,
       "unknown_share": 0.29250000000000004,
@@ -428,6 +463,7 @@
     {
       "id": "my",
       "name": "Malaysia",
+      "name_fr": "Malaisie",
       "local_share": 0.07833565803099822,
       "foreign_share": 0.9216643419690018,
       "unknown_share": 0.19415094339622643,
@@ -440,6 +476,7 @@
     {
       "id": "ng",
       "name": "Nigeria",
+      "name_fr": "Nigeria",
       "local_share": 0.8400506226558702,
       "foreign_share": 0.15994937734412976,
       "unknown_share": 0.27361111111111114,
@@ -452,6 +489,7 @@
     {
       "id": "ni",
       "name": "Nicaragua",
+      "name_fr": "Nicaragua",
       "local_share": 0.0037591878743135094,
       "foreign_share": 0.9962408121256866,
       "unknown_share": 0.17830188679245285,
@@ -464,6 +502,7 @@
     {
       "id": "nl",
       "name": "Netherlands",
+      "name_fr": "Pays-Bas",
       "local_share": 0.281704668930976,
       "foreign_share": 0.7182953310690239,
       "unknown_share": 0.09556603773584904,
@@ -476,6 +515,7 @@
     {
       "id": "no",
       "name": "Norway",
+      "name_fr": "Norv\u00e8ge",
       "local_share": 0.32900452086977405,
       "foreign_share": 0.670995479130226,
       "unknown_share": 0.1350943396226415,
@@ -488,6 +528,7 @@
     {
       "id": "nz",
       "name": "New Zealand",
+      "name_fr": "Nouvelle-Z\u00e9lande",
       "local_share": 0.027410784837712605,
       "foreign_share": 0.9725892151622874,
       "unknown_share": 0.059905660377358505,
@@ -500,6 +541,7 @@
     {
       "id": "pa",
       "name": "Panama",
+      "name_fr": "Panama",
       "local_share": 0.05055913587635266,
       "foreign_share": 0.9494408641236474,
       "unknown_share": 0.2719565217391305,
@@ -512,6 +554,7 @@
     {
       "id": "pe",
       "name": "Peru",
+      "name_fr": "P\u00e9rou",
       "local_share": 0.031015927277548073,
       "foreign_share": 0.9689840727224519,
       "unknown_share": 0.144622641509434,
@@ -524,6 +567,7 @@
     {
       "id": "ph",
       "name": "Philippines",
+      "name_fr": "Philippines",
       "local_share": 0.4991371929047055,
       "foreign_share": 0.5008628070952945,
       "unknown_share": 0.10339622641509431,
@@ -536,6 +580,7 @@
     {
       "id": "pk",
       "name": "Pakistan",
+      "name_fr": "Pakistan",
       "local_share": 0.1929627174316382,
       "foreign_share": 0.8070372825683617,
       "unknown_share": 0.27682926829268295,
@@ -548,6 +593,7 @@
     {
       "id": "pl",
       "name": "Poland",
+      "name_fr": "Pologne",
       "local_share": 0.569135184760271,
       "foreign_share": 0.43086481523972897,
       "unknown_share": 0.20820754716981132,
@@ -560,6 +606,7 @@
     {
       "id": "pt",
       "name": "Portugal",
+      "name_fr": "Portugal",
       "local_share": 0.224205258937646,
       "foreign_share": 0.7757947410623539,
       "unknown_share": 0.1688679245283019,
@@ -572,6 +619,7 @@
     {
       "id": "py",
       "name": "Paraguay",
+      "name_fr": "Paraguay",
       "local_share": 0.006225340437711755,
       "foreign_share": 0.9937746595622882,
       "unknown_share": 0.19150943396226416,
@@ -584,6 +632,7 @@
     {
       "id": "ro",
       "name": "Romania",
+      "name_fr": "Roumanie",
       "local_share": 0.5957446808510638,
       "foreign_share": 0.4042553191489362,
       "unknown_share": 0.29500000000000004,
@@ -596,6 +645,7 @@
     {
       "id": "se",
       "name": "Sweden",
+      "name_fr": "Su\u00e8de",
       "local_share": 0.33038563467772786,
       "foreign_share": 0.6696143653222721,
       "unknown_share": 0.20113207547169812,
@@ -608,6 +658,7 @@
     {
       "id": "sg",
       "name": "Singapore",
+      "name_fr": "Singapour",
       "local_share": 0.0011556011323339956,
       "foreign_share": 0.998844398867666,
       "unknown_share": 0.20367924528301887,
@@ -620,6 +671,7 @@
     {
       "id": "sk",
       "name": "Slovakia",
+      "name_fr": "Slovaquie",
       "local_share": 0.20738238274220233,
       "foreign_share": 0.7926176172577976,
       "unknown_share": 0.25772727272727275,
@@ -632,6 +684,7 @@
     {
       "id": "sv",
       "name": "El Salvador",
+      "name_fr": "Salvador",
       "local_share": 0.0,
       "foreign_share": 1.0,
       "unknown_share": 0.1436792452830189,
@@ -644,6 +697,7 @@
     {
       "id": "tr",
       "name": "T\u00fcrkiye",
+      "name_fr": "Turquie",
       "local_share": 0.7924879712611558,
       "foreign_share": 0.2075120287388443,
       "unknown_share": 0.22499999999999998,
@@ -656,6 +710,7 @@
     {
       "id": "us",
       "name": "United States",
+      "name_fr": "\u00c9tats-Unis",
       "local_share": 0.7182721582964291,
       "foreign_share": 0.28172784170357096,
       "unknown_share": 0.08433962264150939,
@@ -668,6 +723,7 @@
     {
       "id": "uy",
       "name": "Uruguay",
+      "name_fr": "Uruguay",
       "local_share": 0.1505530043336915,
       "foreign_share": 0.8494469956663084,
       "unknown_share": 0.2319811320754717,
@@ -680,6 +736,7 @@
     {
       "id": "ve",
       "name": "Venezuela, Bolivarian Republic of",
+      "name_fr": "Venezuela",
       "local_share": 0.06586921917636646,
       "foreign_share": 0.9341307808236335,
       "unknown_share": 0.13726415094339622,
@@ -692,6 +749,7 @@
     {
       "id": "vn",
       "name": "Viet Nam",
+      "name_fr": "Vi\u00eat Nam",
       "local_share": 0.7205245433640293,
       "foreign_share": 0.27947545663597073,
       "unknown_share": 0.28250000000000003,

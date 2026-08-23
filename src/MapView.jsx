@@ -120,6 +120,7 @@ export default function MapView({
   onSelectCountry,
   onBackground,
   colorFn,
+  lang = "en",
 }) {
   const wrapRef = useRef(null);
   const globeEl = useRef(null);
@@ -159,6 +160,14 @@ export default function MapView({
     countries.find(
       (c) => String(c.id).toLowerCase() === String(id).toLowerCase(),
     );
+
+  // Localized name: French name when in French and present, falling back
+  // to the English name, and finally the raw code — mirrors i18n.js's
+  // displayName so both views agree on labeling.
+  const nameFor = (a2) => {
+    const c = other(a2);
+    return (lang === "fr" ? c?.name_fr || c?.name : c?.name) || "";
+  };
 
   const partnersOf = (id) => {
     const outgoing = edges
@@ -255,7 +264,8 @@ export default function MapView({
   const polygonLabel = (f) => {
     const a2 = NUMERIC_TO_ALPHA2[f.id];
     const c = a2 && ids.has(a2) ? other(a2) : null;
-    return c?.name || c?.id || "";
+    if (!c) return "";
+    return nameFor(a2) || c.id || "";
   };
 
   const handlePolygonClick = (f, event) => {
@@ -321,7 +331,7 @@ export default function MapView({
         labelsData={labelsData}
         labelLat={(a2) => CENTROID[a2]?.[1]}
         labelLng={(a2) => CENTROID[a2]?.[0]}
-        labelText={(a2) => other(a2)?.name || a2.toUpperCase()}
+        labelText={(a2) => nameFor(a2) || a2.toUpperCase()}
         labelSize={(a2) => (a2 === selected?.id ? 0.9 : 0.6)}
         labelColor={(a2) => (a2 === selected?.id ? "#ffffff" : "#F2F3F5")}
         labelDotRadius={0}
