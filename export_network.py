@@ -2,10 +2,19 @@ from pathlib import Path
 import json
 import pycountry
 
-def country_name(cid):
+print(pycountry.countries.get(alpha_2='BG'))
+def country_name(cid, lang='en'):
     try:
         c = pycountry.countries.get(alpha_2=cid.upper())
-        return c.name if c else cid.upper()
+        if not c:
+            return cid.upper()
+        if lang == 'fr':
+            try:
+                from babel import Locale
+                return Locale('fr').territories.get(cid.upper(), c.name)
+            except Exception:
+                return c.name
+        return c.name
     except Exception:
         return cid.upper()
 
@@ -24,7 +33,19 @@ def export_network_data(locality_df, foreign_network, output_path):
     countries=[]
     for k,r in c.iterrows():
         cid=str(k).lower()
-        countries.append({'id':cid,'name':country_name(cid),'local_share':float(r.local_share),'foreign_share':float(r.foreign_share),'unknown_share':float(r.unknown_share),'export_intensity':float(r.export_intensity),'import_intensity':float(r.import_intensity),'net_dominance':float(r.net_dominance),'network_involvement':float(r.network_involvement),'n_weeks':int(r.n_weeks)})
+        countries.append({
+            'id':cid,
+            'name':country_name(cid),
+            'name_fr':country_name(cid,lang='fr'),
+            'local_share':float(r.local_share),
+            'foreign_share':float(r.foreign_share),
+            'unknown_share':float(r.unknown_share),
+            'export_intensity':float(r.export_intensity),
+            'import_intensity':float(r.import_intensity),
+            'net_dominance':float(r.net_dominance),
+            'network_involvement':float(r.network_involvement),
+            'n_weeks':int(r.n_weeks)
+        })
     edges=[{'source':str(r.source),'target':str(r.destination),'weight':float(r.mean_share),'n_weeks':int(r.n_weeks)} for _,r in e.iterrows()]
     output_path.write_text(json.dumps({'metadata':{'title':'Global Music Dominance','n_countries':len(countries),'n_edges':len(edges)},'countries':countries,'edges':edges},indent=2),encoding='utf-8')
     print(f'Exported {len(countries)} countries and {len(edges)} relationships to {output_path}')
