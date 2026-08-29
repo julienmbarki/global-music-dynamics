@@ -38,7 +38,7 @@ body,
   min-height: 100%;
 }
 body {
-  min-width: 1050px;
+  min-width: 320px;
   background: var(--bg);
   color: var(--text);
   scrollbar-width: thin;
@@ -516,6 +516,9 @@ code {
     min-width: 0;
   }
   .app {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
     padding: 16px;
   }
   .main,
@@ -531,22 +534,93 @@ code {
   }
 }
 @media (max-width: 700px) {
+  .app {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    padding: 14px;
+  }
   header {
     height: auto;
+    flex-direction: column;
+    gap: 8px;
+  }
+  h1 {
+    font-size: 22px;
   }
   .actions {
-    display: none;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    padding-top: 4px;
+    border-top: 1px solid var(--border-soft);
+  }
+  .actions a,
+  .actions button {
+    font-size: 13px;
+    padding: 4px 0;
   }
   .controls {
     flex-wrap: wrap;
+    gap: 14px;
     height: auto;
     padding: 8px 0;
   }
+  .controls label:first-child,
+  .controls label:first-child input {
+    width: 100%;
+  }
+  .controls input[type="text"],
+  .controls input:not([type]) {
+    width: 100%;
+  }
+  .range {
+    width: 100%;
+  }
+  .range input {
+    width: 100%;
+  }
+  .main,
+  main {
+    height: auto;
+  }
   .network-card {
-    height: 600px;
+    height: 420px;
+  }
+  .panel {
+    min-height: 0;
   }
   .meta .hint {
     display: none;
+  }
+  .metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .rel {
+    grid-template-columns: 16px 26px 1fr 34px;
+    font-size: 11px;
+  }
+  .legend {
+    height: auto;
+    padding: 8px 10px;
+  }
+  .legend > div {
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+  .legend small {
+    white-space: normal;
+  }
+  .dot,
+  .line {
+    margin-left: 0;
+    margin-right: 4px;
+  }
+  footer {
+    height: auto;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
   }
 }
 
