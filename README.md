@@ -73,10 +73,10 @@ The country names are fetched through [`pycountry`](https://pypi.org/project/pyc
 ## Getting started
 
 ```bash
-npm install
-npm run dev       # local dev server
-npm run build      # production build → dist/
-npm run preview    # preview the production build locally
+npm.cmd install
+npm.cmd run dev       # local dev server
+npm.cmd run build      # production build → dist/
+npm.cmd run preview    # preview the production build locally
 ```
 
 ## Deployment (Vercel / Netlify)
