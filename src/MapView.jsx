@@ -120,6 +120,7 @@ export default function MapView({
   onSelectCountry,
   onBackground,
   colorFn,
+  colorMode,
   lang = "en",
 }) {
   const wrapRef = useRef(null);
@@ -249,7 +250,12 @@ export default function MapView({
     const a2 = NUMERIC_TO_ALPHA2[f.id];
     const inData = a2 && ids.has(a2);
     if (!inData) return BG_FILL;
-    const base = colorFn(other(a2)?.net_dominance);
+    const country = other(a2);
+    const value =
+      colorMode === "consumption"
+        ? country?.local_share
+        : country?.net_dominance;
+    const base = colorFn(value);
     const isDim = !!selected && !visible.has(a2);
     return isDim ? dim(base) : base;
   };

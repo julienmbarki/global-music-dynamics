@@ -11,6 +11,8 @@ export const STRINGS = {
     mapViewBtn: "Map view",
     networkViewBtn: "Network view",
     resetBtn: "Reset view",
+    consumptionViewBtn: "Consumption view",
+    dominanceViewBtn: "Dominance view",
     emptyTitle: "Explore a country",
     emptyBody:
       "Click any country to see local and foreign chart composition, main imports, and main exports.",
@@ -42,6 +44,10 @@ export const STRINGS = {
     weak: "weak",
     strong: "strong",
     footerTag: "Interactive dashboard",
+    foreignConsumption: "Foreign consumption",
+    balancedConsumption: "Balanced consumption",
+    localConsumption: "Local consumption",
+    legendConsumption: "Color represents the share of local music consumption; link thickness represents relationship strength.",
   },
   fr: {
     title: "Flux Musicaux Internationaux",
@@ -53,6 +59,8 @@ export const STRINGS = {
     mapViewBtn: "Vue carte",
     networkViewBtn: "Vue réseau",
     resetBtn: "Réinitialiser",
+    consumptionViewBtn: "Vue consommation",
+    dominanceViewBtn: "Vue dominance",
     emptyTitle: "Explorer un pays",
     emptyBody:
       "Cliquez sur un pays pour voir la composition locale/étrangère du classement, les principales importations et exportations.",
@@ -84,6 +92,10 @@ export const STRINGS = {
     weak: "faible",
     strong: "fort",
     footerTag: "Tableau de bord interactif",
+    foreignConsumption: "Consommation étrangère",
+    balancedConsumption: "Consommation équilibrée",
+    localConsumption: "Consommation locale",
+    legendConsumption: "La couleur représente la part de consommation de musique locale ; l'épaisseur des liens représente la force des relations.",
   },
 };
 

@@ -33,6 +33,16 @@ const color = (v) => {
   const mix = (a, b) => Math.round(a + (b - a) * t);
   return `rgb(${mix(neutral[0], target[0])},${mix(neutral[1], target[1])},${mix(neutral[2], target[2])})`;
 };
+const consumptionColor = (localShare) => {
+  const share = Math.max(0, Math.min(1, Number(localShare) || 0));
+  const foreign = [240, 0, 255];   // Electric magenta
+  const neutral = [86, 92, 100]; // mid slate — balanced
+  const local = [215, 255, 0];     // Electric citron
+  const target = share < 0.5 ? foreign : local;
+  const strength = Math.abs(share - 0.5) * 2; // 0-1
+  const mix = (a, b) => Math.round(a + (b - a) * strength);
+  return `rgb(${mix(neutral[0], target[0])},${mix(neutral[1], target[1])},${mix(neutral[2], target[2])})`;
+};
 function App() {
   const box = useRef(null),
     cyRef = useRef(null),
@@ -46,6 +56,7 @@ function App() {
     [topOnly, setTopOnly] = useState(false),
     [demo, setDemo] = useState(false),
     [view, setView] = useState("network"); // "network" | "map"
+  const [colorMode, setColorMode] = useState("dominance"); // "dominance" | "consumption"
   useEffect(() => {
     fetch("/data/network.json")
       .then((r) => {
@@ -156,7 +167,10 @@ function App() {
         name_fr: c.name_fr,
         net: Number(c.net_dominance) || 0,
         size: Number(c.network_involvement) || 0,
-        color: color(c.net_dominance),
+        color:
+          colorMode === "dominance"
+            ? color(c.net_dominance)
+            : consumptionColor(c.local_share),
       },
     }));
     const es = edges.map((e, i) => ({
@@ -311,7 +325,7 @@ function App() {
       cyRef.current = null;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data, threshold, view]);
+  }, [data, threshold, view, colorMode]);
   useEffect(() => {
     if (!query.trim() || !data) return;
     let q = query.toLowerCase(),
@@ -363,6 +377,17 @@ function App() {
             {view === "network" ? t("mapViewBtn") : t("networkViewBtn")}
           </button>
           <button onClick={reset}>{t("resetBtn")}</button>
+          <button
+            onClick={() =>
+              setColorMode((mode) =>
+                mode === "dominance" ? "consumption" : "dominance"
+              )
+            }
+          >
+            {colorMode === "dominance"
+              ? t("consumptionViewBtn")
+              : t("dominanceViewBtn")}
+          </button>
         </div>
       </header>
       {demo && (
@@ -432,22 +457,45 @@ function App() {
               selected={selected}
               onSelectCountry={(id) => setSelected(other(id) || null)}
               onBackground={reset}
-              colorFn={color}
+              colorFn={
+                colorMode === "dominance"
+                  ? color
+                  : consumptionColor
+              }
+              colorMode={colorMode}
               lang={lang}
             />
           )}
           <div className="legend">
-            <div>
-              <span className="dot blue" />
-              {t("importer")} <span className="dot grey" />
-              {t("balanced")} <span className="dot red" />
-              {t("exporter")} <span className="line" />
-              {t("weak")} <span className="line thick" />
-              {t("strong")}
-            </div>
-            <small>
-              {view === "network" ? t("legendNetwork") : t("legendMap")}
-            </small>
+            {colorMode === "dominance" ? (
+              <>
+                <div>
+                  <span className="dot blue" />
+                  {t("importer")}
+                  <span className="dot grey" />
+                  {t("balanced")}
+                  <span className="dot red" />
+                  {t("exporter")}
+                  <span className="line" />
+                  {t("weak")}
+                  <span className="line thick" />
+                  {t("strong")}
+                </div>
+                <small>{view === "network" ? t("legendNetwork") : t("legendMap")}</small>
+              </>
+            ) : (
+              <>
+                <div>
+                  <span className="dot" style={{ background: "#f000ff" }} />
+                  {t("foreignConsumption")}
+                  <span className="dot grey" />
+                  {t("balancedConsumption")}
+                  <span className="dot" style={{ background: "#d7ff00" }} />
+                  {t("localConsumption")}
+                </div>
+                <small>{t("legendConsumption")}</small>
+              </>
+            )}
           </div>
         </section>
         <aside className="panel">
